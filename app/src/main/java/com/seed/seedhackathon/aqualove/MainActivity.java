@@ -1,13 +1,26 @@
 package com.seed.seedhackathon.aqualove;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static FragmentManager fragmentManager;
+
+    GoogleMap mMap;
+    private static Double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +31,27 @@ public class MainActivity extends AppCompatActivity {
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
         testObject.saveInBackground();
+
+        // Create New Map
+        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                .getMap();
+
+        latitude = 26.78;
+        longitude = -72.56;
+
+        setUpMap();
+
+
+    }
+
+    private void setUpMap() {
+        mMap.setMyLocationEnabled(true);
+        // For dropping a marker at a point on the Map
+        final LatLng posCor = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(posCor).title("My Home").snippet("Home Address"));
+
+        // For zooming automatically to the Dropped PIN Location
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(posCor, 12.0f));
     }
 
     @Override
@@ -41,4 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+
