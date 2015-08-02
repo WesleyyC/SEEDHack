@@ -5,19 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseObject;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    // Set up log tag
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Test
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+        // Test Sample
+        //Utility.createDummyParse(getApplicationContext());
+        List<String> testRow = Utility.singleTestRow(getApplicationContext());
+
     }
 
     @Override

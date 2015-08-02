@@ -3,4 +3,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <!-- Table Key-->
+    <string name="test_table_name">postTestObject</string>
+    <string name="user_key">user_name</string>
+    <string name="user_latitude_key">user_latitude</string>
+    <string name="user_longitude_key">user_longitude</string>
+    <string name="user_text_key">user_text</string>
+    <string name="user_data_key">user_data</string>
+    <string name="user_image_key">user_image</string>
+    <string name="user_comment_key">user_comment</string>
 </resources>
