@@ -1,8 +1,5 @@
 package com.seed.seedhackathon.aqualove;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,10 +11,12 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseObject;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    public static FragmentManager fragmentManager;
+    // Set up log tag
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     GoogleMap mMap;
     private static Double latitude, longitude;
@@ -31,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
         testObject.saveInBackground();
+
+        // Test Sample
+        //Utility.createDummyParse(getApplicationContext());
+        List<String> testRow = Utility.singleTestRow(getApplicationContext());
 
         // Create New Map
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         // For zooming automatically to the Dropped PIN Location
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(posCor, 12.0f));
+
     }
 
     @Override
