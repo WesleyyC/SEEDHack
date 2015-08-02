@@ -36,6 +36,7 @@ public class Utility {
     // Put everthing in a table
     public static final int[] tableKey={R.string.user_key,R.string.user_latitude_key,R.string.user_longitude_key,
             R.string.user_text_key,R.string.user_data_key,R.string.user_image_key};
+
     // Separate the comment array string
     public static final String[][] user_comment={null,{"感谢！"},{"我也觉得!","天啊!", "有关部门请注意！"},null};
 
@@ -157,20 +158,16 @@ public class Utility {
         }
         // Set image
         if(image == null){
-            newObject.put(context.getString(tableKey.length-1), JSONObject.NULL);
+            newObject.put(context.getString(tableKey[tableKey.length-1]), JSONObject.NULL);
         }else{
-            newObject.put(context.getString(tableKey.length-1), image);
+            newObject.put(context.getString(tableKey[tableKey.length-1]), image);
         }
 
         newObject.saveInBackground();
     }
 
     public static String data2str(int[] data){
-        String dataStr = "";
-        for(int n: data){
-            dataStr=" "+n;
-        }
-        dataStr.trim();
+        String dataStr = data[0]+" "+data[1]+" "+data[2]+" "+data[3];
         return dataStr;
     }
 }

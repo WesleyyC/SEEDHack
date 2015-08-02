@@ -1,6 +1,7 @@
 package com.seed.seedhackathon.aqualove;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Marker> markerList;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         setUpMap();
 
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        refresh();
     }
 
     private void setUpMap() {
@@ -99,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         }
         LatLngBounds bounds = builder.build();
 
-        int padding = 25; // offset from edges of the map in pixels
+        int padding = 100; // offset from edges of the map in pixels
         final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
@@ -107,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 mMap.animateCamera(cu);
             }
         });
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
     }
 
@@ -126,15 +137,24 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-            commentsAdaptor.notifyDataSetInvalidated();
-            commentsAdaptor.clear();
-            commentsAdaptor.loadObjects();
-            commentsAdaptor.notifyDataSetChanged();
-            setUpMap();
+            refresh();
             return true;
         }
 
+        if (id == R.id.action_post) {
+            final Intent goToPostActivity = new Intent(this, PostActivity.class);
+            startActivity(goToPostActivity);
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refresh() {
+        commentsAdaptor.notifyDataSetInvalidated();
+        commentsAdaptor.clear();
+        commentsAdaptor.loadObjects();
+        commentsAdaptor.notifyDataSetChanged();
+        setUpMap();
     }
 
 
