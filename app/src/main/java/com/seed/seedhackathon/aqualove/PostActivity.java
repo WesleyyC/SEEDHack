@@ -1,20 +1,18 @@
 package com.seed.seedhackathon.aqualove;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.Random;
 
 /**
  * Created by Taibo on 8/2/15.
  */
-public class PostActivity extends Activity{
+public class PostActivity extends ActionBarActivity {
 
 
     EditText userName;

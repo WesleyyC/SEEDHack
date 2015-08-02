@@ -17,4 +17,5 @@
     <string name="user_data_key">user_data</string>
     <string name="user_image_key">user_image</string>
     <string name="user_comment_key">user_comment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

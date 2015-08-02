@@ -5,6 +5,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_post" android:title="@string/action_post"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_profile" android:title="@string/action_profile"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <!--<item android:id="@+id/action_profile" android:title="@string/action_profile"-->
+        <!--android:orderInCategory="100" app:showAsAction="never" />-->
 </menu>
