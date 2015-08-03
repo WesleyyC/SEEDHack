@@ -166,8 +166,13 @@ public class Utility {
         newObject.saveInBackground();
     }
 
+    // convert array data to String
     public static String data2str(int[] data){
-        String dataStr = data[0]+" "+data[1]+" "+data[2]+" "+data[3];
+        String dataStr="";
+        for(int i =0; i < data.length; i++){
+            dataStr=dataStr+" "+data[i];
+        }
+        dataStr=dataStr.trim();
         return dataStr;
     }
 }
